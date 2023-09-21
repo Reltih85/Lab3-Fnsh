@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Casa de Cambio</title>
+</head>
+<body>
+    <h1>Casa de Cambio</h1>
+    
+    <p>Seleccionar moneda a enviar:</p>
+    <input type="radio" name="moneda" value="dolar" id="dolar">
+    <label for="dolar">Dólar</label>
+    <input type="radio" name="moneda" value="euro" id="euro">
+    <label for="euro">Euro</label>
+
+    <p>Ingrese monto:</p>
+    <input type="number" id="monto" step="0.01">
+
+    <button onclick="calcularTotal()">Cotizar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularTotal() {
+            var monto = parseFloat(document.getElementById('monto').value);
+            var monedaEnviar = document.querySelector('input[name="moneda"]:checked').value;
+
+            if (monedaEnviar === 'dolar') {
+                var total = monto * 3.73; 
+            } else if (monedaEnviar === 'euro') {
+                var total = monto * 3.96; 
+            }
+
+            document.getElementById('resultado').innerHTML = 'Total a recibir: ' + total.toFixed(2) + ' dólares'; 
+        }
+    </script>
+</body>
+</html>
